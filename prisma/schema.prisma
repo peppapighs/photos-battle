@@ -47,6 +47,9 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  albums Album[]
+  photos Photo[]
 }
 
 model VerificationToken {
@@ -55,4 +58,26 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Album {
+  id     String @id
+  userId String
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photos Photo[]
+}
+
+model Photo {
+  id      String @id @default(cuid())
+  photoId String
+  albumId String
+  userId  String
+  rating  Int    @default(1500)
+
+  album Album @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([photoId, albumId])
+  @@index([albumId])
 }
