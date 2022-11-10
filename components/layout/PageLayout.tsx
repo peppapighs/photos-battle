@@ -1,14 +1,18 @@
 import { useEffect } from 'react'
 
+import { useRouter } from 'next/router'
+
 import { signIn, useSession } from 'next-auth/react'
 
 import Loading from './Loading'
 import Navbar from './Navbar'
 interface Props {
+  authRequired?: boolean
   children: React.ReactNode
 }
 
-export default function PageLayout({ children }: Props) {
+export default function PageLayout({ authRequired, children }: Props) {
+  const router = useRouter()
   const { status, data: session } = useSession()
 
   useEffect(() => {
@@ -20,6 +24,12 @@ export default function PageLayout({ children }: Props) {
       }
     }
   }, [status, session])
+
+  useEffect(() => {
+    if (authRequired && status === 'unauthenticated') {
+      router.replace('/')
+    }
+  }, [status, authRequired, router])
 
   if (status === 'loading') {
     return <Loading />
