@@ -69,8 +69,8 @@ export const nextAuthOptions: NextAuthOptions = {
             ...session,
             error: 'RefreshTokenNotFound',
             user: {
-              id: user.id,
               ...session.user,
+              id: user.id,
             },
           }
         }
@@ -98,8 +98,8 @@ export const nextAuthOptions: NextAuthOptions = {
               ...session,
               error: 'RefreshAccessTokenFailed',
               user: {
-                id: user.id,
                 ...session.user,
+                id: user.id,
               },
             }
           }
@@ -118,8 +118,8 @@ export const nextAuthOptions: NextAuthOptions = {
       return {
         ...session,
         user: {
-          id: user.id,
           ...session.user,
+          id: user.id,
         },
       }
     },
