@@ -79,7 +79,6 @@ export default async function handler(
     }
 
     const data = await response.json()
-    console.log(data)
     const nextPageToken = photos[photos.length - 1].id
     res.status(200).json(MediaList.parse({ ...data, nextPageToken }))
   } else if (method === 'POST') {
