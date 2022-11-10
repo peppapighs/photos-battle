@@ -25,7 +25,7 @@ export default async function handler(
 
   const accessToken = await getGoogleAccessToken(session.user.id)
   if (!accessToken) {
-    res.status(401).end('Access token not found')
+    res.status(404).end('Access token not found')
     return
   }
 

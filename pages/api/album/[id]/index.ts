@@ -33,18 +33,14 @@ export default async function handler(
   }
 
   const album = await prisma.album.findUnique({ where: { id: albumId } })
-  if (!album) {
+  if (!album || album.userId !== session.user.id) {
     res.status(404).end('Not Found')
-    return
-  }
-  if (album.userId !== session.user.id) {
-    res.status(401).end('Unauthorized')
     return
   }
 
   const accessToken = await getGoogleAccessToken(session.user.id)
   if (!accessToken) {
-    res.status(401).end('Access token not found')
+    res.status(404).end('Access token not found')
     return
   }
 
