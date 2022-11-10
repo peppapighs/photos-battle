@@ -1,4 +1,6 @@
-import { useSession } from 'next-auth/react'
+import { useEffect } from 'react'
+
+import { signIn, useSession } from 'next-auth/react'
 
 import Loading from './Loading'
 import Navbar from './Navbar'
@@ -7,7 +9,17 @@ interface Props {
 }
 
 export default function PageLayout({ children }: Props) {
-  const { status } = useSession()
+  const { status, data: session } = useSession()
+
+  useEffect(() => {
+    if (status === 'authenticated' && session.error) {
+      if (session.error === 'RefreshAccessTokenFailed') {
+        signIn('google')
+      } else if (session.error === 'RefreshTokenNotFound') {
+        signIn('google-refresh-token')
+      }
+    }
+  }, [status, session])
 
   if (status === 'loading') {
     return <Loading />
