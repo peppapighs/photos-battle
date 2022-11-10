@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -10,10 +11,17 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import classNames from 'lib/classNames'
 
 export default function Navbar() {
+  const { asPath } = useRouter()
   const { status, data: session } = useSession()
 
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure
+      as="nav"
+      className={classNames(
+        'bg-white',
+        status === 'unauthenticated' && asPath === '/' ? '' : 'shadow'
+      )}
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
