@@ -31,9 +31,7 @@ export default function Navbar() {
                 <Link href="/" className="flex">
                   <span className="sr-only">photos-battle</span>
                   <Logo className="h-8 w-auto" alt="" />
-                  <h1 className="text-xl font-bold ml-3">
-                    photos-battle
-                  </h1>
+                  <h1 className="ml-3 text-xl font-bold">photos-battle</h1>
                 </Link>
               </div>
               {status === 'authenticated' ? (
@@ -61,7 +59,7 @@ export default function Navbar() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-64 origin-top-right divide-y divide-gray-200 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="absolute right-0 z-20 mt-2 w-64 origin-top-right divide-y divide-gray-200 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <div className="px-4 py-2">
                             <p className="truncate text-sm font-medium text-gray-700">
                               {session.user?.name}
