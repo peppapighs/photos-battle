@@ -9,6 +9,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 import classNames from 'lib/classNames'
+import Logo from 'svg/Logo'
 
 export default function Navbar() {
   const { asPath } = useRouter()
@@ -27,8 +28,12 @@ export default function Navbar() {
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex flex-shrink-0 items-center">
-                <Link href="/">
+                <Link href="/" className="flex">
                   <span className="sr-only">photos-battle</span>
+                  <Logo className="h-8 w-auto" alt="" />
+                  <h1 className="text-xl font-bold ml-3">
+                    photos-battle
+                  </h1>
                 </Link>
               </div>
               {status === 'authenticated' ? (
