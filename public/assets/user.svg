@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  fill="currentColor"
+  viewBox="0 0 24 24"
+  version="1.1"
+  id="svg4"
+  width="24"
+  height="24"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg"
+>
+  <defs id="defs8" />
+  <rect
+    style="fill: #f3f4f6; fill-opacity: 1"
+    id="rect957"
+    width="24"
+    height="24"
+    x="0"
+    y="0"
+  />
+  <path
+    d="M 24,20.993 V 24 H 0 V 21.004 A 14.977,14.977 0 0 1 12.004,15 c 4.904,0 9.26,2.354 11.996,5.993 z M 16.002,8.999 a 4,4 0 1 1 -8,0 4,4 0 0 1 8,0 z"
+    id="path2"
+    style="fill: #d1d5db; fill-opacity: 1"
+  />
+</svg>
