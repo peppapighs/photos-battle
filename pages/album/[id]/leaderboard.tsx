@@ -7,31 +7,25 @@ import PageLayout from 'components/layout/PageLayout'
 import classNames from 'lib/classNames'
 import { AlbumContents } from 'types/google'
 
-export default function AlbumPage() {
+export default function LeaderboardPage() {
   const { id: albumId } = useRouter().query
 
   const tabs = [
-    { name: 'View All', href: '#', current: true },
-    {
-      name: 'Leaderboard',
-      href: `/album/${albumId}/leaderboard`,
-      current: false,
-    },
+    { name: 'View All', href: `/album/${albumId}`, current: false },
+    { name: 'Leaderboard', href: '#', current: true },
   ]
 
-  const fetchAllPhotos = async ({ pageParam = '' }) => {
-    const res = await fetch(`/api/album/${albumId}`, {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ pageToken: pageParam }),
-    })
+  const fetchLeaderboard = async ({ pageParam = '' }) => {
+    const res = await fetch(
+      `/api/album/${albumId}?` + new URLSearchParams({ pageToken: pageParam })
+    )
     return AlbumContents.parse(await res.json())
   }
 
   return (
     <>
       <Head>
-        <title>Album • photos-battle</title>
+        <title>Leaderboard • photos-battle</title>
       </Head>
       <PageLayout authRequired>
         <div className="py-10">
@@ -72,8 +66,8 @@ export default function AlbumPage() {
             <div className="mx-auto max-w-5xl sm:px-6 lg:px-8">
               <div className="px-4 py-8 sm:px-0">
                 <PhotoGridList
-                  queryKey={['album', `${albumId}`, 'all']}
-                  queryFn={fetchAllPhotos}
+                  queryKey={['album', `${albumId}`, 'leaderboard']}
+                  queryFn={fetchLeaderboard}
                 />
               </div>
             </div>
