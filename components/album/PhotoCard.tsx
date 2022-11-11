@@ -22,9 +22,10 @@ export function SkeletonPhotoCard({ ...props }) {
 
 interface Props {
   media: Media
+  sizes?: string
 }
 
-export default function PhotoCard({ media, ...props }: Props) {
+export default function PhotoCard({ media, sizes, ...props }: Props) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -38,7 +39,10 @@ export default function PhotoCard({ media, ...props }: Props) {
           <Image
             src={`${media.baseUrl}=d`}
             className="object-cover object-top transition group-hover:brightness-90"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            sizes={
+              sizes ||
+              '(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+            }
             priority
             fill
             alt=""
