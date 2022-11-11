@@ -94,7 +94,9 @@ export default function AlbumGridList() {
           disabled={!hasNextPage || isFetchingNextPage}
         >
           <span className="sr-only">Load more</span>
-          <SkeletonAlbumCard />
+          <ul>
+            <SkeletonAlbumCard />
+          </ul>
         </button>
       )}
     </ul>

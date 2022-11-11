@@ -90,7 +90,9 @@ export default function PhotoGridList({ queryKey, queryFn }: Props) {
           disabled={!hasNextPage || isFetchingNextPage}
         >
           <span className="sr-only">Load more</span>
-          <SkeletonPhotoCard />
+          <ul>
+            <SkeletonPhotoCard />
+          </ul>
         </button>
       )}
     </ul>
