@@ -1,3 +1,5 @@
+import { randomInt } from 'crypto'
+
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { unstable_getServerSession } from 'next-auth'
@@ -8,9 +10,6 @@ import { nextAuthOptions } from 'pages/api/auth/[...nextauth]'
 import { MediaList } from 'types/google'
 import getGoogleAccessToken from 'utils/getGoogleAccessToken'
 import getUpdatedRating from 'utils/getUpdatedRating'
-
-const PHOTO_COLUMN = ['id', 'photoId', 'rating']
-const SORT_ORDER = ['asc', 'desc']
 
 export default async function handler(
   req: NextApiRequest,
@@ -54,14 +53,12 @@ export default async function handler(
     }
 
     const rowIndex = Math.floor(Math.random() * (photoCount - 1))
-    const sortBy = PHOTO_COLUMN[Math.floor(Math.random() * PHOTO_COLUMN.length)]
-    const sortOrder = SORT_ORDER[Math.floor(Math.random() * SORT_ORDER.length)]
 
     const photos = await prisma.photo.findMany({
       take: 2,
       skip: rowIndex,
       where: { albumId },
-      orderBy: { [sortBy]: sortOrder },
+      orderBy: { rating: randomInt(2) === 0 ? 'asc' : 'desc' },
     })
 
     const url =
