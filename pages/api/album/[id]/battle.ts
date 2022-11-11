@@ -48,7 +48,7 @@ export default async function handler(
   if (method === 'GET') {
     const photoCount = album._count.photos
     if (photoCount < 2) {
-      res.status(404).end('Not enough photos')
+      res.status(200).json({ mediaItems: [] })
       return
     }
 
