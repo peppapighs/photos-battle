@@ -34,7 +34,9 @@ export default function PhotoGridList({ queryKey, queryFn }: Props) {
         className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4"
       >
         {[...Array(8)].map((_, i) => (
-          <SkeletonPhotoCard key={i} />
+          <li key={i}>
+            <SkeletonPhotoCard />
+          </li>
         ))}
       </ul>
     )
@@ -76,7 +78,9 @@ export default function PhotoGridList({ queryKey, queryFn }: Props) {
       {data.pages.map((page, i) => (
         <Fragment key={i}>
           {page.mediaItems.map(media => (
-            <PhotoCard key={media.id} media={media} />
+            <li key={media.id}>
+              <PhotoCard media={media} />
+            </li>
           ))}
         </Fragment>
       ))}
@@ -90,9 +94,7 @@ export default function PhotoGridList({ queryKey, queryFn }: Props) {
           disabled={!hasNextPage || isFetchingNextPage}
         >
           <span className="sr-only">Load more</span>
-          <ul>
-            <SkeletonPhotoCard />
-          </ul>
+          <SkeletonPhotoCard />
         </button>
       )}
     </ul>

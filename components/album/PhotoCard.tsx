@@ -8,7 +8,7 @@ import { Media } from 'types/google'
 
 export function SkeletonPhotoCard({ ...props }) {
   return (
-    <li
+    <div
       className="col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
       {...props}
     >
@@ -16,7 +16,7 @@ export function SkeletonPhotoCard({ ...props }) {
       <div className="px-4 py-2">
         <div className="h-6 w-3/4 animate-pulse rounded-full bg-gray-200"></div>
       </div>
-    </li>
+    </div>
   )
 }
 
@@ -30,7 +30,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
 
   return (
     <>
-      <li
+      <div
         className="group col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:cursor-pointer hover:bg-gray-100 hover:shadow-lg"
         onClick={() => setOpen(true)}
         {...props}
@@ -52,7 +52,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
             {media.filename}
           </p>
         </div>
-      </li>
+      </div>
 
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={setOpen}>

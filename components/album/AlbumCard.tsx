@@ -6,7 +6,7 @@ import { Album } from 'types/google'
 
 export function SkeletonAlbumCard({ ...props }) {
   return (
-    <li
+    <div
       className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
       {...props}
     >
@@ -31,7 +31,7 @@ export function SkeletonAlbumCard({ ...props }) {
           </div>
         </div>
       </div>
-    </li>
+    </div>
   )
 }
 
@@ -41,7 +41,7 @@ interface Props {
 
 export default function AlbumCard({ album, ...props }: Props) {
   return (
-    <li
+    <div
       className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
       {...props}
     >
@@ -90,6 +90,6 @@ export default function AlbumCard({ album, ...props }: Props) {
           </div>
         </div>
       </div>
-    </li>
+    </div>
   )
 }

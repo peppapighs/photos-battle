@@ -38,7 +38,9 @@ export default function AlbumGridList() {
         className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
         {[...Array(8)].map((_, i) => (
-          <SkeletonAlbumCard key={i} />
+          <li key={i}>
+            <SkeletonAlbumCard />
+          </li>
         ))}
       </ul>
     )
@@ -80,7 +82,9 @@ export default function AlbumGridList() {
       {data.pages.map((page, i) => (
         <Fragment key={i}>
           {page.albums.map(album => (
-            <AlbumCard key={album.id} album={album} />
+            <li key={album.id}>
+              <AlbumCard album={album} />
+            </li>
           ))}
         </Fragment>
       ))}
@@ -94,9 +98,7 @@ export default function AlbumGridList() {
           disabled={!hasNextPage || isFetchingNextPage}
         >
           <span className="sr-only">Load more</span>
-          <ul>
-            <SkeletonAlbumCard />
-          </ul>
+          <SkeletonAlbumCard />
         </button>
       )}
     </ul>
