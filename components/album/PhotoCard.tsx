@@ -40,8 +40,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
             src={`${media.baseUrl}=d`}
             className="object-cover object-top transition group-hover:brightness-90"
             sizes={
-              sizes ||
-              '(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+              sizes || '(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw'
             }
             priority
             fill
@@ -81,7 +80,12 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:max-w-xl sm:p-6 lg:max-w-2xl">
-                  <div className="flex aspect-square flex-col items-center justify-center">
+                  <div className="text-center">
+                    <Dialog.Title className="truncate text-base font-medium text-gray-900">
+                      {media.filename}
+                    </Dialog.Title>
+                  </div>
+                  <div className="mt-4">
                     {'video' in media.mediaMetadata ? (
                       <video
                         controls
@@ -102,6 +106,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
                       />
                     )}
                   </div>
+
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
