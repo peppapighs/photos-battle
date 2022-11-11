@@ -57,8 +57,8 @@ export default function Battle({ albumId }: Props) {
   )
 
   const submitVote = useMutation(['album', albumId, 'play'], updateRating, {
-    onMutate() {
-      return queryClient.cancelQueries(['album', albumId, 'play'])
+    onSuccess() {
+      return queryClient.invalidateQueries(['album', albumId, 'leaderboard'])
     },
     onSettled() {
       return queryClient.invalidateQueries(['album', albumId, 'play'])
