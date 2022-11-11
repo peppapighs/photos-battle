@@ -7,7 +7,7 @@ import PhotoCard, { SkeletonPhotoCard } from './PhotoCard'
 
 function SkeletonBattle() {
   return (
-    <div className="grid w-full grid-cols-2 gap-6">
+    <div className="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       <ul className="flex flex-col">
         <SkeletonPhotoCard />
         <div className="mt-4 inline-flex w-full animate-pulse items-center justify-center rounded-md border border-transparent bg-gray-200 py-3 px-6 shadow-sm">
@@ -98,7 +98,7 @@ export default function Battle({ albumId }: Props) {
   }
 
   return (
-    <div className="grid w-full grid-cols-2 gap-6">
+    <div className="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       <ul className="flex flex-col">
         <PhotoCard media={data.mediaItems[0]} sizes="50vw" />
         <button
