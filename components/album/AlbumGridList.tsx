@@ -48,7 +48,7 @@ export default function AlbumGridList() {
 
   if (status === 'error') {
     return (
-      <div className="flex h-96 flex-col items-center justify-center rounded-lg border-4 border-dashed border-gray-200 dark:border-gray-700">
+      <div className="flex h-96 flex-col items-center justify-center rounded-lg border-4 border-dashed border-gray-200 p-4 text-center dark:border-gray-700">
         <ExclamationCircleIcon className="h-24 w-auto text-red-400 dark:text-red-500" />
         <h3 className="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">
           Error while loading albums.
@@ -62,7 +62,7 @@ export default function AlbumGridList() {
 
   if (data.pages[0].albums.length === 0) {
     return (
-      <div className="flex h-96 flex-col items-center justify-center rounded-lg border-4 border-dashed border-gray-200 dark:border-gray-700">
+      <div className="flex h-96 flex-col items-center justify-center rounded-lg border-4 border-dashed border-gray-200 p-4 text-center dark:border-gray-700">
         <FolderIcon className="h-24 w-auto text-gray-400 dark:text-gray-500" />
         <h3 className="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">
           No album found
