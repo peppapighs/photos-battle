@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 
 import { signIn, useSession } from 'next-auth/react'
 
+import changeTheme from 'lib/changeTheme'
+
+import Footer from './Footer'
 import Loading from './Loading'
 import Navbar from './Navbar'
 interface Props {
@@ -31,6 +34,8 @@ export default function PageLayout({ authRequired, children }: Props) {
     }
   }, [status, authRequired, router])
 
+  useEffect(() => changeTheme())
+
   if (status === 'loading') {
     return <Loading />
   }
@@ -41,6 +46,7 @@ export default function PageLayout({ authRequired, children }: Props) {
         <Navbar />
         {children}
       </main>
+      <Footer />
     </div>
   )
 }
