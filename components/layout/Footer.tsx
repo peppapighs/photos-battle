@@ -21,8 +21,8 @@ export default function Footer() {
         Footer
       </h2>
       <div className="mx-auto max-w-5xl py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
+        <div className="flex flex-col items-center justify-between sm:flex-row">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:text-left">
             <a
               className="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300"
               href="https://github.com/peppapighs/photos-battle"
@@ -43,11 +43,11 @@ export default function Footer() {
                 />
               </svg>
             </a>
-            <p className="ml-3 text-base text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-base text-gray-500 dark:text-gray-400 sm:mt-0 sm:ml-3">
               &copy; 2022 Pontakorn Prasertsuk. All rights reserved.
             </p>
           </div>
-          <div className="ml-3 flex-shrink-0">
+          <div className="mt-3 flex-shrink-0 sm:mt-0 sm:ml-3">
             <div>
               <label htmlFor="theme" className="sr-only">
                 Theme
