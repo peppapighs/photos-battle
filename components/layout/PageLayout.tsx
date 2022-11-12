@@ -36,7 +36,7 @@ export default function PageLayout({ authRequired, children }: Props) {
   }
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 dark:bg-gray-900">
       <main className="flex min-h-screen flex-col">
         <Navbar />
         {children}

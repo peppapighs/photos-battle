@@ -7,26 +7,26 @@ import { Album } from 'types/google'
 export function SkeletonAlbumCard({ ...props }) {
   return (
     <div
-      className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
+      className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg dark:divide-gray-600 dark:bg-gray-800"
       {...props}
     >
       <div>
-        <div className="aspect-square animate-pulse bg-gray-200"></div>
+        <div className="aspect-square animate-pulse bg-gray-200 dark:bg-gray-600"></div>
         <div className="px-4 py-2">
-          <div className="h-5 w-3/4 animate-pulse rounded-full bg-gray-200"></div>
-          <div className="mt-2 h-3 w-1/2 animate-pulse rounded-full bg-gray-200"></div>
+          <div className="h-5 w-3/4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-600"></div>
+          <div className="mt-2 h-4 w-1/2 animate-pulse rounded-full bg-gray-200 dark:bg-gray-600"></div>
         </div>
       </div>
       <div>
-        <div className="-mt-px flex divide-x divide-gray-200">
+        <div className="-mt-px flex divide-x divide-gray-200 dark:divide-gray-600">
           <div className="flex w-0 flex-1">
             <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4">
-              <div className="h-5 w-16 animate-pulse rounded-full bg-gray-200"></div>
+              <div className="h-5 w-16 animate-pulse rounded-full bg-gray-200 dark:bg-gray-600"></div>
             </div>
           </div>
           <div className="-ml-px flex w-0 flex-1">
             <div className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4">
-              <div className="h-5 w-16 animate-pulse rounded-full bg-gray-200"></div>
+              <div className="h-5 w-16 animate-pulse rounded-full bg-gray-200 dark:bg-gray-600"></div>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@ interface Props {
 export default function AlbumCard({ album, ...props }: Props) {
   return (
     <div
-      className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
+      className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg dark:divide-gray-600 dark:bg-gray-800"
       {...props}
     >
       <div>
@@ -57,32 +57,35 @@ export default function AlbumCard({ album, ...props }: Props) {
           />
         </div>
         <div className="px-4 py-2">
-          <p className="truncate text-base font-medium text-gray-900">
+          <p className="truncate text-base font-medium text-gray-900 dark:text-gray-100">
             {album.title}
           </p>
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
             {album.mediaItemsCount} items
           </p>
         </div>
       </div>
       <div>
-        <div className="-mt-px flex divide-x divide-gray-200">
+        <div className="-mt-px flex divide-x divide-gray-200 dark:divide-gray-600">
           <div className="flex w-0 flex-1">
             <a
               href={`/album/${album.id}/play`}
-              className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 transition hover:text-gray-500"
+              className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
             >
-              <PlayIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+              <PlayIcon
+                className="h-5 w-5 text-gray-400 dark:text-gray-500"
+                aria-hidden="true"
+              />
               <span className="ml-3">Play</span>
             </a>
           </div>
           <div className="-ml-px flex w-0 flex-1">
             <a
               href={`/album/${album.id}`}
-              className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 transition hover:text-gray-500"
+              className="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
             >
               <ListBulletIcon
-                className="h-5 w-5 text-gray-400"
+                className="h-5 w-5 text-gray-400 dark:text-gray-500"
                 aria-hidden="true"
               />
               <span className="ml-3">View</span>

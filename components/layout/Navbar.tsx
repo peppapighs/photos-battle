@@ -19,7 +19,7 @@ export default function Navbar() {
     <Disclosure
       as="nav"
       className={classNames(
-        'bg-white',
+        'bg-white dark:bg-gray-800',
         status === 'unauthenticated' && asPath === '/' ? '' : 'shadow'
       )}
     >
@@ -31,7 +31,9 @@ export default function Navbar() {
                 <Link href="/" className="flex">
                   <span className="sr-only">photos-battle</span>
                   <Logo className="h-8 w-auto" alt="" />
-                  <h1 className="ml-3 text-xl font-bold">photos-battle</h1>
+                  <h1 className="ml-3 text-xl font-bold text-gray-900 dark:text-white">
+                    photos-battle
+                  </h1>
                 </Link>
               </div>
               {status === 'authenticated' ? (
@@ -39,7 +41,7 @@ export default function Navbar() {
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <Menu as="div" className="relative">
                       <div>
-                        <Menu.Button className="flex rounded-full bg-white text-sm transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <Menu.Button className="flex rounded-full bg-white text-sm transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-gray-900 dark:focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
                           <Image
                             className="h-8 w-8 rounded-full"
@@ -59,12 +61,12 @@ export default function Navbar() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 z-20 mt-2 w-64 origin-top-right divide-y divide-gray-200 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="absolute right-0 z-20 mt-2 w-64 origin-top-right divide-y divide-gray-200 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-gray-600 dark:bg-gray-800 dark:ring-gray-600">
                           <div className="px-4 py-2">
-                            <p className="truncate text-sm font-medium text-gray-700">
+                            <p className="truncate text-sm font-medium text-gray-700 dark:text-gray-200">
                               {session.user?.name}
                             </p>
-                            <p className="truncate text-xs font-normal text-gray-500">
+                            <p className="truncate text-xs font-normal text-gray-500 dark:text-gray-400">
                               {session.user?.email}
                             </p>
                           </div>
@@ -74,8 +76,10 @@ export default function Navbar() {
                                 <a
                                   href="#"
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700 transition'
+                                    active
+                                      ? 'bg-gray-100 dark:bg-gray-800'
+                                      : '',
+                                    'block px-4 py-2 text-sm text-gray-700 transition dark:text-gray-200'
                                   )}
                                   onClick={() => signOut()}
                                 >
@@ -89,7 +93,7 @@ export default function Navbar() {
                     </Menu>
                   </div>
                   <div className="-mr-2 flex items-center sm:hidden">
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-400">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -109,7 +113,7 @@ export default function Navbar() {
                 <div className="flex items-center">
                   <button
                     type="button"
-                    className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                     onClick={() => signIn('google')}
                   >
                     Sign in
@@ -133,10 +137,10 @@ export default function Navbar() {
                     />
                   </div>
                   <div className="ml-3 truncate">
-                    <div className="truncate text-base font-medium text-gray-800">
+                    <div className="truncate text-base font-medium text-gray-800 dark:text-gray-100">
                       {session.user?.name}
                     </div>
-                    <div className="truncate text-sm font-medium text-gray-500">
+                    <div className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
                       {session.user?.email}
                     </div>
                   </div>
@@ -145,7 +149,7 @@ export default function Navbar() {
                   <Disclosure.Button
                     as="a"
                     href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 transition hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100"
                     onClick={() => signOut()}
                   >
                     Sign out

@@ -21,7 +21,7 @@ export default function Home() {
           <div className="py-10">
             <header>
               <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">
+                <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
                   Albums
                 </h1>
               </div>

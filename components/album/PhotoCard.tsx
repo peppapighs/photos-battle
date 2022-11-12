@@ -9,12 +9,12 @@ import { Media } from 'types/google'
 export function SkeletonPhotoCard({ ...props }) {
   return (
     <div
-      className="col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg"
+      className="col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg dark:bg-gray-800"
       {...props}
     >
-      <div className="aspect-square animate-pulse bg-gray-200"></div>
+      <div className="aspect-square animate-pulse bg-gray-200 dark:bg-gray-600"></div>
       <div className="px-4 py-2">
-        <div className="h-6 w-3/4 animate-pulse rounded-full bg-gray-200"></div>
+        <div className="h-6 w-3/4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-600"></div>
       </div>
     </div>
   )
@@ -31,14 +31,14 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
   return (
     <>
       <div
-        className="group col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:cursor-pointer hover:bg-gray-100 hover:shadow-lg"
+        className="group col-span-1 overflow-hidden rounded-lg bg-white shadow transition hover:cursor-pointer hover:bg-gray-100 hover:shadow-lg dark:bg-gray-800 dark:hover:bg-gray-700"
         onClick={() => setOpen(true)}
         {...props}
       >
         <div className="relative aspect-square">
           <Image
             src={`${media.baseUrl}=d`}
-            className="object-cover object-top transition group-hover:brightness-90"
+            className="object-cover object-top transition group-hover:brightness-90 dark:group-hover:brightness-110"
             sizes={
               sizes || '(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw'
             }
@@ -48,7 +48,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
           />
         </div>
         <div className="px-4 py-2">
-          <p className="truncate text-base font-medium text-gray-900">
+          <p className="truncate text-base font-medium text-gray-900 dark:text-gray-100">
             {media.filename}
           </p>
         </div>
@@ -79,9 +79,9 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:max-w-xl sm:p-6 lg:max-w-2xl">
+                <Dialog.Panel className="relative w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:bg-gray-800 sm:my-8 sm:max-w-xl sm:p-6 lg:max-w-2xl">
                   <div className="text-center">
-                    <Dialog.Title className="truncate text-base font-medium text-gray-900">
+                    <Dialog.Title className="truncate text-base font-medium text-gray-900 dark:text-gray-100">
                       {media.filename}
                     </Dialog.Title>
                   </div>
@@ -110,7 +110,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus:ring-offset-gray-800"
                       onClick={() => setOpen(false)}
                     >
                       Close
