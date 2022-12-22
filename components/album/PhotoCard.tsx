@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react'
 import Image from 'next/image'
 
 import { Dialog, Transition } from '@headlessui/react'
+import { useWindowSize } from 'usehooks-ts'
 
 import { Media } from 'types/google'
 
@@ -26,7 +27,18 @@ interface Props {
 }
 
 export default function PhotoCard({ media, sizes, ...props }: Props) {
+  const { width } = useWindowSize()
+
   const [open, setOpen] = useState(false)
+
+  const getCoverPhotoWidth = () => {
+    if (width <= 640) {
+      return Math.ceil(width / 2)
+    } else if (width <= 768) {
+      return Math.ceil(width / 3)
+    }
+    return 256
+  }
 
   return (
     <>
@@ -37,7 +49,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
       >
         <div className="relative aspect-square">
           <Image
-            src={`${media.baseUrl}=d`}
+            src={`${media.baseUrl}=w${getCoverPhotoWidth()}`}
             className="object-cover object-top transition group-hover:brightness-90 dark:group-hover:brightness-110"
             sizes={
               sizes || '(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw'

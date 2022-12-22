@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { ListBulletIcon, PlayIcon } from '@heroicons/react/24/outline'
+import { useWindowSize } from 'usehooks-ts'
 
 import { Album } from 'types/google'
 
@@ -40,6 +41,19 @@ interface Props {
 }
 
 export default function AlbumCard({ album, ...props }: Props) {
+  const { width } = useWindowSize()
+
+  const getCoverPhotoWidth = () => {
+    if (width <= 640) {
+      return width
+    } else if (width <= 768) {
+      return Math.ceil(width / 2)
+    } else if (width <= 1024) {
+      return Math.ceil(width / 3)
+    }
+    return 256
+  }
+
   return (
     <div
       className="col-span-1 flex flex-col divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg dark:divide-gray-600 dark:bg-gray-800"
@@ -48,7 +62,7 @@ export default function AlbumCard({ album, ...props }: Props) {
       <div>
         <div className="relative aspect-square">
           <Image
-            src={`${album.coverPhotoBaseUrl}=d`}
+            src={`${album.coverPhotoBaseUrl}=w${getCoverPhotoWidth()}`}
             className="object-cover object-top"
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             priority
