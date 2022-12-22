@@ -23,10 +23,11 @@ export function SkeletonPhotoCard({ ...props }) {
 
 interface Props {
   media: Media
+  priority?: boolean
   sizes?: string
 }
 
-export default function PhotoCard({ media, sizes, ...props }: Props) {
+export default function PhotoCard({ media, priority, sizes, ...props }: Props) {
   const { width } = useWindowSize()
 
   const [open, setOpen] = useState(false)
@@ -54,7 +55,7 @@ export default function PhotoCard({ media, sizes, ...props }: Props) {
             sizes={
               sizes || '(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw'
             }
-            priority
+            priority={priority}
             fill
             alt=""
           />

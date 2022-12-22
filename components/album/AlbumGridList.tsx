@@ -81,9 +81,9 @@ export default function AlbumGridList() {
     >
       {data.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.albums.map(album => (
+          {page.albums.map((album, index) => (
             <li key={album.id}>
-              <AlbumCard album={album} />
+              <AlbumCard album={album} priority={index == 0} />
             </li>
           ))}
         </Fragment>

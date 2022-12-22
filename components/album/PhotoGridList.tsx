@@ -77,9 +77,9 @@ export default function PhotoGridList({ queryKey, queryFn }: Props) {
     >
       {data.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.mediaItems.map(media => (
+          {page.mediaItems.map((media, index) => (
             <li key={media.id}>
-              <PhotoCard media={media} />
+              <PhotoCard media={media} priority={index == 0} />
             </li>
           ))}
         </Fragment>

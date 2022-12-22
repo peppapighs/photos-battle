@@ -38,9 +38,10 @@ export function SkeletonAlbumCard({ ...props }) {
 
 interface Props {
   album: Album
+  priority?: boolean
 }
 
-export default function AlbumCard({ album, ...props }: Props) {
+export default function AlbumCard({ album, priority, ...props }: Props) {
   const { width } = useWindowSize()
 
   const getCoverPhotoWidth = () => {
@@ -65,7 +66,7 @@ export default function AlbumCard({ album, ...props }: Props) {
             src={`${album.coverPhotoBaseUrl}=w${getCoverPhotoWidth()}`}
             className="object-cover object-top"
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            priority
+            priority={priority}
             fill
             alt=""
           />
